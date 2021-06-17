@@ -1,0 +1,7 @@
+{
+  "name": "LaTerraza",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
