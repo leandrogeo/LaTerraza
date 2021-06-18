@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebaseConfig : {
+    apiKey: "AIzaSyBCJapizaLRq5ODI-w_YT9w_4Epx9dWtq8",
+    authDomain: "laterraza-af670.firebaseapp.com",
+    databaseURL: "https://laterraza-af670.firebaseio.com",
+    projectId: "laterraza-af670",
+    storageBucket: "laterraza-af670.appspot.com",
+    messagingSenderId: "697097266378",
+    appId: "1:697097266378:web:3cd915d356ffa8cd930033",
+    measurementId: "G-K43VZBP4G6"
+  },
 };
 
 /*
