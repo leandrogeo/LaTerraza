@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class HomePage {
 
-  constructor(private authSvc: AuthService) { }
+  constructor(private authSvc: AuthService,private router:Router) { }
 
 /*LOGGIN CON correoE*/
   async onLogin(email, password) {
@@ -16,7 +17,7 @@ export class HomePage {
       const user = await this.authSvc.login(email.value, password.value)
       if (user) {
         const Verified = this.authSvc.isEmailVerified(user)
-        console.log('ver', Verified)
+        this.redirectUser(Verified);
       }
 
     } catch (error) {
@@ -31,13 +32,22 @@ export class HomePage {
       const user = await this.authSvc.logingoogle();
       if (user) {
         const Verified = this.authSvc.isEmailVerified(user)
-        console.log('ver', Verified)
+        this.redirectUser(Verified);
       }
 
     } catch (error) {
       console.log('erro en .ts', error)
 
     }
+  }
+
+  private redirectUser(Verified:boolean){
+    if(Verified){
+      this.router.navigate(['administrador']);
+    }else{
+      this.router.navigate(['email-very']);
+    }
+
   }
 
 }

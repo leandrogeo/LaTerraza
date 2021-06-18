@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 
@@ -9,7 +10,7 @@ import { AuthService } from '../services/auth.service';
 })
 export class RegistroPage implements OnInit {
 
-  constructor(private authSvc:AuthService) { }
+  constructor(private authSvc:AuthService, private router:Router) { }
 
   ngOnInit() { 
   }
@@ -20,13 +21,23 @@ export class RegistroPage implements OnInit {
       const user= await this.authSvc.registro(email.value,password.value);
       if(user){
         console.log('User->',user)
-        //checkEmail
+        const isVerified = this.authSvc.isEmailVerified(user);
+        this.redirectUser(isVerified);
       }
       
     } catch (error) {
       console.log('Error chucha madre',error)
       
     }
+  }
+
+  private redirectUser(Verified:boolean){
+    if(Verified){
+      this.router.navigate(['administrador']);
+    }else{
+      this.router.navigate(['email-very']);
+    }
+
   }
 
 }

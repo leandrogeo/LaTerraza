@@ -19,6 +19,16 @@ const routes: Routes = [
     path: 'administrador',
     loadChildren: () => import('./administrador/administrador.module').then( m => m.AdministradorPageModule)
   },
+ 
+  {
+    path: 'recuperarcontra',
+    loadChildren: () => import('./recuperarcontra/recuperarcontra.module').then( m => m.RecuperarcontraPageModule)
+  },
+  {
+    path: 'email-very',
+    loadChildren: () => import('./email-very/email-very.module').then( m => m.EmailVeryPageModule)
+  },
+
 ];
 
 @NgModule({
